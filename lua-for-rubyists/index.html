@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lua for Rubyists</title>
+    <link href="css/reset.css" rel="stylesheet" />
+    <meta name="author" content="Enrique García Cota">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="css/favicon.png" />
+    <link rel="apple-touch-icon" href="css/apple-touch-icon.png" />
+    <!-- Code Prettifier: -->
+<link href="css/highlight.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <link href="css/style.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,800italic,300,400,800' rel='stylesheet' type='text/css'>    
+
+
+  </head>
+
+  <body>
+  <div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  </div>
+    <div id="impress">
+    <div class='step' >
+    
+<h1>Lua for Rubyists</h1>
+
+<h2>Enrique García Cota</h2>
+
+<p>madrid-rb, 2014-01</p>
+</div>
+      <div class='step' >
+    
+<h1>2 main parts:</h1>
+
+<h2>Lua</h2>
+
+<h2>Applications</h2>
+</div>
+      <div class='step' >
+    
+<h1>Lua</h1>
+
+<h2>Compared with Ruby</h2>
+</div>
+      <div class='step' >
+    
+<h1>It&#39;s Lua, not LUA</h1>
+</div>
+      <div class='step' >
+    
+<p>PENDING: Lua logo</p>
+</div>
+      <div class='step' >
+    
+<p>PENDING: Earth + Moon</p>
+</div>
+      <div class='step' >
+    
+<table><thead>
+<tr>
+<th><strong>Ruby</strong></th>
+<th><strong>Lua</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Yukihiro, Japan</td>
+<td>Roberto, Brazil</td>
+</tr>
+<tr>
+<td>PENDING: Image of matz</td>
+<td>PENDING: Image of Roberto(joke)</td>
+</tr>
+<tr>
+<td>Make programmers happy</td>
+<td>Embeddable &gt; Elegant &gt; Fast</td>
+</tr>
+</tbody></table>
+</div>
+      <div class='step' >
+    
+<table><thead>
+<tr>
+<th><strong>Ruby</strong></th>
+<th><strong>Lua</strong></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Yukihiro, Japan</td>
+<td>Roberto, Brazil</td>
+</tr>
+<tr>
+<td>PENDING: Image of matz</td>
+<td>PENDING: Image of Roberto</td>
+</tr>
+<tr>
+<td>Make programmers happy</td>
+<td>Embeddable &gt; Elegant &gt; Fast</td>
+</tr>
+</tbody></table>
+</div>
+      <div class='step' >
+    
+<h1>Size</h1>
+</div>
+      <div class='step' >
+    
+<h1>Ruby (MRI)</h1>
+<pre><code class='prettyprint bash'>git clone https://github.com/ruby/ruby.git
+rm -rf ruby/benchmark ruby/bootstraptest ruby/doc \
+       ruby/ext ruby/sample ruby/test ruby/tool
+cloc ruby
+</code></pre>
+<h2>&rArr; ~650k (C, C++, Ruby)</h2>
+</div>
+      <div class='step' >
+    
+<h1>Lua (5.2.3)</h1>
+<pre><code class='prettyprint bash'>git clone https://github.com/LuaDist/lua.git
+cloc lua/src
+</code></pre>
+<h2>&rArr; ~15k (C99)</h2>
+</div>
+      <div class='step' >
+    
+<h1>Batteries included</h1>
+</div>
+      <div class='step' >
+    
+<h1>PENDING: Rabbit with/without batteries</h1>
+</div>
+      <div class='step' >
+    
+<p>Artillery battery: PENDING definition</p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/artillery-battery.jpg" alt=""></p>
+</div>
+      <div class='step' >
+    
+<p>Pending: Image of soldier</p>
+</div>
+      <div class='step' >
+    
+<h1>Ruby: Core + stdlib</h1>
+</div>
+      <div class='step' >
+    
+<h2>Ruby core:</h2>
+<pre><code class='prettyprint ruby'>$ irb
+> Object.constants.map{|c| Object.const_get(c)}
+ => [ ... ]
+
+> _.select{|c| c.is_a? Class}
+ => [ Object, Module, Class, BasicObject, Method,
+      NilClass, String, Symbol, Regexp, Range,
+      Time, Date, File, Dir, TrueClass, FalseClass,
+      Numeric, Integer, Fixnum, Float, Bignum,
+      Rational, Complex, Thread, Fiber, ...
+    ] (73)
+
+> _.map{|c| c.methods.count}.inject(:+)
+  => 7112
+
+> _.map{|c| c.public_methods(false).count}.inject(:+)
+  => 399
+</code></pre></div>
+      <div class='step' >
+    
+<h2>Ruby Stdlib:</h2>
+
+<ul>
+<li>&rArr; <a href="http://www.ruby-doc.org/stdlib-2.1.0/">http://www.ruby-doc.org/stdlib-2.1.0/</a></li>
+<li>109 packages: <code class='inline prettyprint'>set</code>, <code class='inline prettyprint'>base64</code>, <code class='inline prettyprint'>date</code>, <code class='inline prettyprint'>erb</code>, <code class='inline prettyprint'>yaml</code>, <code class='inline prettyprint'>csv</code>, <code class='inline prettyprint'>json</code>, <code class='inline prettyprint'>rss</code>, <code class='inline prettyprint'>minitest</code>, <code class='inline prettyprint'>net/*</code>, <code class='inline prettyprint'>zlib</code>, <code class='inline prettyprint'>webrick</code>, ...</li>
+<li>Presentation: <a href="http://www.confreaks.com/videos/2347-mwrc2013-ruby-batteries-included">Ruby: Batteries Included</a></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h1>Lua:</h1>
+
+<h2>types</h2>
+<pre><code class='prettyprint '>string, number, boolean, function, table, thread, nil
+</code></pre>
+<h2>libraries</h2>
+<pre><code class='prettyprint '>string, table, math, os, io, coroutine, debug
+</code></pre>
+<h2>top-level functions</h2>
+<pre><code class='prettyprint '>require, print, pairs (~30)
+</code></pre></div>
+      <div class='step' >
+    
+      </div>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>
+    
