@@ -26,19 +26,65 @@ madrid-rb, 2014-01
 
 ---
 
-PENDING: Lua logo
+# SOL &rArr;
+## Simple Object Language
 
 ---
 
-PENDING: Earth + Moon
+![fullscreen](images/sol.png)
 
 ---
+
+# Lua &rArr;
+## “Moon” in Portuguese
+## (No Initials)
+
+---
+
+![fullscreen](images/lua-logo.png)
+
+---
+
+![fullscreen](images/earth-moon.png)
+
+---
+
+# Which Lua?
+# Which Ruby?
+
+---
+
+# Ruby
+
+## MRI 1.8.7
+## MRI 2.x
+## JRuby
+## Rubinius
+
+PENDING: image of ruby?
+
+---
+
+# Lua
+
+## Lua 5.1
+## Lua 5.2
+## LuaJit
+
+PENDING: image of lua?
+
+---
+
+# Origin & Phylosophy
+
+---
+
 
 | **Ruby**                           | **Lua**                         |
 |------------------------------------|---------------------------------|
 | Yukihiro, Japan                    | Roberto, Brazil                 |
 | PENDING: Image of matz             | PENDING: Image of Roberto(joke) |
-| Make programmers happy             | Embeddable > Elegant > Fast     |
+| Make programmers happy             | Portable > Embeddable > Fast    |
 
 ---
 
@@ -46,7 +92,7 @@ PENDING: Earth + Moon
 |------------------------------------|---------------------------------|
 | Yukihiro, Japan                    | Roberto, Brazil                 |
 | PENDING: Image of matz             | PENDING: Image of Roberto       |
-| Make programmers happy             | Embeddable > Elegant > Fast     |
+| Make programmers happy             | Portable > Embeddable > Fast    |
 
 ---
 
@@ -90,7 +136,7 @@ Artillery battery: PENDING definition
 
 ---
 
-![](images/artillery-battery.jpg)
+![fullscreen](images/artillery-battery.jpg)
 
 ---
 
@@ -126,25 +172,116 @@ $ irb
 
 ## Ruby Stdlib:
 
-* &rArr; http://www.ruby-doc.org/stdlib-2.1.0/
-* 109 packages: `set`, `base64`, `date`, `erb`, `yaml`, `csv`, `json`, `rss`, `minitest`, `net/*`, `zlib`, `webrick`, ...
-* Presentation: [Ruby: Batteries Included](http://www.confreaks.com/videos/2347-mwrc2013-ruby-batteries-included)
+* http://www.ruby-doc.org/stdlib-2.1.0
+
+* 109 packages:
+
+  |          |            |            |           |
+  |----------|------------|------------|-----------|
+  | `set`    | `yaml`     | `minitest` | `erb`     |
+  | `base64` | `csv`      | `rss`      | `webrick` |
+  | `date`   | `json`     | `zlib`     | `net/*`   |
+  | ...      |            |            |           |
+
+* Presentation: “Ruby: Batteries Included”
+
+  http://www.confreaks.com/videos/2347
 
 ---
 
-# Lua:
+## Lua:
 
-## types
+Types (~7)
 
-    string, number, boolean, function, table, thread, nil
+    string, number, table, boolean, function, thread, nil
 
-## libraries
+Libraries (~7)
 
-    string, table, math, os, io, coroutine, debug
+    string, math, table, os, io, coroutine, debug
 
-## top-level functions
+Top-level functions (~30)
 
-    require, print, pairs (~30)
+    assert          load        pcall     setmetatable
+    collectgarbage  loadfile    print     tonumber
+    dofile          loadstring  rawequal  tostring
+    error           module      rawget    type
+    gcinfo          newproxy    rawset    xpcall
+    getfenv         next        unpack
+    getmetatable    require     select
+    ipairs          pairs       setfenv
 
 ---
+```lua
+local name = "peter" -- or 'peter'
+
+other_name = "john" -- global variable!
+
+local age = 17
+age = age + 1
+local adult = age >= 18 -- boolean
+
+local tname = type(name)
+print(tname) -- string
+
+```
+
+---
+
+```lua
+local ADULT_AGE = 18
+local function is_adult(age)
+  return age >= ADULT_AGE
+end
+
+-- equivalent*
+local is_adult = function(age)
+  return age >= ADULT_AGE
+end
+
+local adult = is_adult(age)
+print(type(is_adult)) -- function
+```
+
+---
+
+```lua
+local vowels = { 'a', 'e', 'i', 'o', 'u'}
+print(vowels[1]) -- a
+
+local person = {}
+person['name'] = 'john'
+person.age = 17
+print(person.name) -- john
+print(person.age) -- 17
+
+local another_person = {name = 'john', age = 15}
+
+print(type(vowels)) -- table
+print(type(person)) -- table
+```
+
+---
+
+# Libraries
+
+---
+
+# Ruby: Gems
+# www.rubygems.org
+
+---
+
+# Rails
+
+PENDING: Destroyer
+
+---
+
+# Lua: Rocks
+# www.luarocks.com
+
+---
+
+
+
 

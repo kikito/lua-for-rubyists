@@ -1,13 +1,3 @@
-GIT
-  remote: https://github.com/egonSchiele/mdpress.git
-  revision: 287ff7aa3e8de38187eed0fdfc4e405d26b76ebe
-  specs:
-    mdpress (0.0.15)
-      httparty
-      launchy
-      redcarpet
-      trollop
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -17,7 +7,7 @@ GEM
     coderay (1.1.0)
     ffi (1.9.3)
     formatador (0.2.4)
-    guard (2.2.5)
+    guard (2.3.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
       lumberjack (~> 1.0)
@@ -36,6 +26,11 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     lumberjack (1.0.4)
+    mdpress (0.0.17)
+      httparty
+      launchy
+      redcarpet
+      trollop
     method_source (0.8.2)
     multi_xml (0.5.5)
     pry (0.9.12.4)
@@ -57,4 +52,4 @@ PLATFORMS
 DEPENDENCIES
   guard
   guard-shell
-  mdpress!
+  mdpress

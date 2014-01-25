@@ -54,11 +54,65 @@
 </div>
       <div class='step' >
     
-<p>PENDING: Lua logo</p>
+<h1>SOL &rArr;</h1>
+
+<h2>Simple Object Language</h2>
 </div>
       <div class='step' >
     
-<p>PENDING: Earth + Moon</p>
+<p><img src="images/sol.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<h1>Lua &rArr;</h1>
+
+<h2>“Moon” in Portuguese</h2>
+
+<h2>(No Initials)</h2>
+</div>
+      <div class='step' >
+    
+<p><img src="images/lua-logo.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/earth-moon.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<h1>Which Lua?</h1>
+
+<h1>Which Ruby?</h1>
+</div>
+      <div class='step' >
+    
+<h1>Ruby</h1>
+
+<h2>MRI 1.8.7</h2>
+
+<h2>MRI 2.x</h2>
+
+<h2>JRuby</h2>
+
+<h2>Rubinius</h2>
+
+<p>PENDING: image of ruby?</p>
+</div>
+      <div class='step' >
+    
+<h1>Lua</h1>
+
+<h2>Lua 5.1</h2>
+
+<h2>Lua 5.2</h2>
+
+<h2>LuaJit</h2>
+
+<p>PENDING: image of lua?</p>
+</div>
+      <div class='step' >
+    
+<h1>Origin &amp; Phylosophy</h1>
 </div>
       <div class='step' >
     
@@ -78,7 +132,7 @@
 </tr>
 <tr>
 <td>Make programmers happy</td>
-<td>Embeddable &gt; Elegant &gt; Fast</td>
+<td>Portable &gt; Embeddable &gt; Fast</td>
 </tr>
 </tbody></table>
 </div>
@@ -100,7 +154,7 @@
 </tr>
 <tr>
 <td>Make programmers happy</td>
-<td>Embeddable &gt; Elegant &gt; Fast</td>
+<td>Portable &gt; Embeddable &gt; Fast</td>
 </tr>
 </tbody></table>
 </div>
@@ -140,7 +194,7 @@ cloc lua/src
 </div>
       <div class='step' >
     
-<p><img src="images/artillery-battery.jpg" alt=""></p>
+<p><img src="images/artillery-battery.jpg" alt="fullscreen"></p>
 </div>
       <div class='step' >
     
@@ -176,24 +230,131 @@ cloc lua/src
 <h2>Ruby Stdlib:</h2>
 
 <ul>
-<li>&rArr; <a href="http://www.ruby-doc.org/stdlib-2.1.0/">http://www.ruby-doc.org/stdlib-2.1.0/</a></li>
-<li>109 packages: <code class='inline prettyprint'>set</code>, <code class='inline prettyprint'>base64</code>, <code class='inline prettyprint'>date</code>, <code class='inline prettyprint'>erb</code>, <code class='inline prettyprint'>yaml</code>, <code class='inline prettyprint'>csv</code>, <code class='inline prettyprint'>json</code>, <code class='inline prettyprint'>rss</code>, <code class='inline prettyprint'>minitest</code>, <code class='inline prettyprint'>net/*</code>, <code class='inline prettyprint'>zlib</code>, <code class='inline prettyprint'>webrick</code>, ...</li>
-<li>Presentation: <a href="http://www.confreaks.com/videos/2347-mwrc2013-ruby-batteries-included">Ruby: Batteries Included</a></li>
+<li><p><a href="http://www.ruby-doc.org/stdlib-2.1.0">http://www.ruby-doc.org/stdlib-2.1.0</a></p></li>
+<li><p>109 packages:</p>
+
+<table><thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class='inline prettyprint'>set</code></td>
+<td><code class='inline prettyprint'>yaml</code></td>
+<td><code class='inline prettyprint'>minitest</code></td>
+<td><code class='inline prettyprint'>erb</code></td>
+</tr>
+<tr>
+<td><code class='inline prettyprint'>base64</code></td>
+<td><code class='inline prettyprint'>csv</code></td>
+<td><code class='inline prettyprint'>rss</code></td>
+<td><code class='inline prettyprint'>webrick</code></td>
+</tr>
+<tr>
+<td><code class='inline prettyprint'>date</code></td>
+<td><code class='inline prettyprint'>json</code></td>
+<td><code class='inline prettyprint'>zlib</code></td>
+<td><code class='inline prettyprint'>net/*</code></td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></li>
+<li><p>Presentation: “Ruby: Batteries Included”</p>
+
+<p><a href="http://www.confreaks.com/videos/2347">http://www.confreaks.com/videos/2347</a></p></li>
 </ul>
 </div>
       <div class='step' >
     
-<h1>Lua:</h1>
+<h2>Lua:</h2>
 
-<h2>types</h2>
-<pre><code class='prettyprint '>string, number, boolean, function, table, thread, nil
+<p>Types (~7)</p>
+<pre><code class='prettyprint '>string, number, table, boolean, function, thread, nil
 </code></pre>
-<h2>libraries</h2>
-<pre><code class='prettyprint '>string, table, math, os, io, coroutine, debug
+<p>Libraries (~7)</p>
+<pre><code class='prettyprint '>string, math, table, os, io, coroutine, debug
 </code></pre>
-<h2>top-level functions</h2>
-<pre><code class='prettyprint '>require, print, pairs (~30)
+<p>Top-level functions (~30)</p>
+<pre><code class='prettyprint '>assert          load        pcall     setmetatable
+collectgarbage  loadfile    print     tonumber
+dofile          loadstring  rawequal  tostring
+error           module      rawget    type
+gcinfo          newproxy    rawset    xpcall
+getfenv         next        unpack
+getmetatable    require     select
+ipairs          pairs       setfenv
 </code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint lua'>local name = "peter" -- or 'peter'
+
+other_name = "john" -- global variable!
+
+local age = 17
+age = age + 1
+local adult = age >= 18 -- boolean
+
+local tname = type(name)
+print(tname) -- string
+
+</code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint lua'>local ADULT_AGE = 18
+local function is_adult(age)
+  return age >= ADULT_AGE
+end
+
+-- equivalent*
+local is_adult = function(age)
+  return age >= ADULT_AGE
+end
+
+local adult = is_adult(age)
+print(type(is_adult)) -- function
+</code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint lua'>local vowels = { 'a', 'e', 'i', 'o', 'u'}
+print(vowels[1]) -- a
+
+local person = {}
+person['name'] = 'john'
+person.age = 17
+print(person.name) -- john
+print(person.age) -- 17
+
+local another_person = {name = 'john', age = 15}
+
+print(type(vowels)) -- table
+print(type(person)) -- table
+</code></pre></div>
+      <div class='step' >
+    
+<h1>Libraries</h1>
+</div>
+      <div class='step' >
+    
+<h1>Ruby: Gems</h1>
+
+<h1><a href="http://www.rubygems.org">www.rubygems.org</a></h1>
+</div>
+      <div class='step' >
+    
+<h1>Rails</h1>
+
+<p>PENDING: Destroyer</p>
+</div>
+      <div class='step' >
+    
+<h1>Lua: Rocks</h1>
+
+<h1><a href="http://www.luarocks.com">www.luarocks.com</a></h1>
+</div>
       <div class='step' >
     
       </div>
