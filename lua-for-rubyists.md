@@ -40,20 +40,18 @@ madrid-rb, 2014-01
 ## (No Initials)
 
 ---
+= data-transition='fade'
 
 ![fullscreen](images/lua-logo.png)
 
 ---
+= data-transition='fade'
 
 ![fullscreen](images/earth-moon.png)
 
 ---
 
-# Evolution
-
----
-
-# Evolution: Ruby
+# Generalities
 
 ---
 
@@ -64,22 +62,18 @@ madrid-rb, 2014-01
 
 ---
 
-![fullscreen](images/ruby-timeline.png)
-
----
-
-# Evolution: Lua
+![fullscreen](images/ruby-timeline.svg)
 
 ---
 
 ![float-left](images/roberto.png)
 
 ## Roberto Ierusalimschy
-> Lua is portable, embeddable & fast.
+> Portable, embeddable, fast.
 
 ---
 
-![fullscreen](images/lua-timeline.png)
+![fullscreen](images/lua-timeline.svg)
 
 ---
 
@@ -87,35 +81,39 @@ madrid-rb, 2014-01
 
 ---
 
-# Ruby
+## Ruby
 
-## MRI (1.8.7, 1.9.x, 2.x)
-## JRuby
-## Rubinius
+### MRI (1.8.7, 1.9.x, 2.x)
+### JRuby
+### Rubinius
+
+---
+= data-transition='fade'
+
+![fullscreen](images/ruby-venn-1.svg)
+
+---
+= data-transition='fade'
+
+![fullscreen](images/ruby-venn-2.svg)
 
 ---
 
-![fullscreen](images/ruby-venn-1.png)
+## Lua
+
+### Lua (5.0, 5.1, 5.2)
+### LuaJIT
+### eLua
 
 ---
+= data-transition='fade'
 
-![fullscreen](images/ruby-venn-2.png)
-
----
-
-# Lua
-
-## Lua (5.0, 5.1, 5.2)
-## LuaJIT
-## eLua
+![fullscreen](images/lua-venn-1.svg)
 
 ---
+= data-transition='fade'
 
-![fullscreen](images/lua-venn-1.png)
-
----
-
-![fullscreen](images/lua-venn-2.png)
+![fullscreen](images/lua-venn-2.svg)
 
 ---
 

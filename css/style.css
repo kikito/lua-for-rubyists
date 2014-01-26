@@ -26,16 +26,10 @@ body {
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-transition: opacity 1s;
-  -moz-transition: opacity 1s;
-  -ms-transition: opacity 1s;
-  -o-transition: opacity 1s;
-  transition: opacity 1s;
+
 }
 
-.impress-enabled .step {
-  margin: 0;
-  opacity: 0.3;
+.step[data-transition='fade'] {
   -webkit-transition: opacity 1s;
   -moz-transition: opacity 1s;
   -ms-transition: opacity 1s;
@@ -60,21 +54,26 @@ em {
   font-style: italic;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-weight: normal;
 }
 
 h1 {
   font-size: 120px;
   margin: 20px 0;
-  line-height: 130px;
+  line-height: 160px;
 }
 
 h2 {
+  font-size: 80px;
+  font-weight: 300;
+  line-height: 110px;
+}
+
+h3 {
   font-size: 48px;
   font-weight: 300;
   letter-spacing: .1em;
-  text-transform: uppercase;
   line-height: 72px;
   margin: 10px 0;
 }
@@ -85,15 +84,23 @@ h2 {
 }
 
 blockquote {
-  text-align: justify;
-  font-weight: 300;
   font-style: italic;
-  line-height: 1.4;
-  margin: 20px 0;
-  padding: 10px 0;
-  border-top: 1px solid #aaa;
-  border-bottom: 1px solid #aaa;
-  width: 1060px;
+  font-size: 1.2em;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: #c0c0c0;
+  content: "\201C";
+  font-size: 4em;
+  font-family: Georgia, serif;
+  line-height: 0.1em;
+  margin-right: 0.1em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
 }
 table {
   width:100%;
@@ -111,16 +118,7 @@ a {
   pointer-events: none; /* Fix Body Click */
   color: inherit;
   text-decoration: none;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -ms-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
   font-weight:bold;
-}
-
-a:hover {
-  color: #333;
 }
 
 p {
