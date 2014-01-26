@@ -49,33 +49,7 @@ madrid-rb, 2014-01
 
 ---
 
-# Which Lua?
-# Which Ruby?
-
----
-
-# Ruby
-
-## MRI 1.8.7
-## MRI 2.x
-## JRuby
-## Rubinius
-
-PENDING: image of ruby?
-
----
-
-# Lua
-
-## Lua 5.1
-## Lua 5.2
-## LuaJit
-
-PENDING: image of lua?
-
----
-
-# Origin & Phylosophy
+# Origins
 
 ---
 
@@ -93,6 +67,42 @@ PENDING: image of lua?
 | Yukihiro, Japan                    | Roberto, Brazil                 |
 | PENDING: Image of matz             | PENDING: Image of Roberto       |
 | Make programmers happy             | Portable > Embeddable > Fast    |
+
+---
+
+# Versions
+
+---
+
+# Ruby
+
+## MRI (1.8.7, 1.9.x, 2.x)
+## JRuby
+## Rubinius
+
+---
+
+![fullscreen](images/ruby-venn-1.png)
+
+---
+
+![fullscreen](images/ruby-venn-2.png)
+
+---
+
+# Lua
+
+## Lua (5.0, 5.1, 5.2)
+## LuaJIT
+## eLua
+
+---
+
+![fullscreen](images/lua-venn-1.png)
+
+---
+
+![fullscreen](images/lua-venn-2.png)
 
 ---
 
