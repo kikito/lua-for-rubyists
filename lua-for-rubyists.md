@@ -49,28 +49,41 @@ madrid-rb, 2014-01
 
 ---
 
-# Origins
+# Evolution
 
 ---
 
-
-| **Ruby**                           | **Lua**                         |
-|------------------------------------|---------------------------------|
-| Yukihiro, Japan                    | Roberto, Brazil                 |
-| PENDING: Image of matz             | PENDING: Image of Roberto(joke) |
-| Make programmers happy             | Portable > Embeddable > Fast    |
+# Evolution: Ruby
 
 ---
 
-| **Ruby**                           | **Lua**                         |
-|------------------------------------|---------------------------------|
-| Yukihiro, Japan                    | Roberto, Brazil                 |
-| PENDING: Image of matz             | PENDING: Image of Roberto       |
-| Make programmers happy             | Portable > Embeddable > Fast    |
+![float-left](images/matz.png)
+
+## Yukihiro Matsumoto
+> A general-purpose language to make programmers happy
 
 ---
 
-# Versions
+![fullscreen](images/ruby-timeline.png)
+
+---
+
+# Evolution: Lua
+
+---
+
+![float-left](images/roberto.png)
+
+## Roberto Ierusalimschy
+> Lua is portable, embeddable & fast.
+
+---
+
+![fullscreen](images/lua-timeline.png)
+
+---
+
+# Implementations
 
 ---
 
