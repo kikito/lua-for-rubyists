@@ -147,11 +147,6 @@ cloc lua/src
 
 ### &rArr; ~15k (C99)
 
-
----
-
-# Ruby: Core + stdlib
-
 ---
 ## Ruby core:
 ```ruby
@@ -198,6 +193,13 @@ $ irb
 
 ---
 
+![float-left](images/gems.png)
+## Ruby &rArr; gems
+## rubygems.org
+## ~70000 gems
+
+---
+
 ## Lua:
 
 Types (~7)
@@ -224,18 +226,6 @@ Top-level functions (~30)
     getmetatable    require     select
     ipairs          pairs       setfenv
 ```
-
----
-
-# Libraries
-
----
-
-![float-left](images/gems.png)
-## Ruby &rArr; gems
-## rubygems.org
-## ~70000 gems
-
 
 ---
 
