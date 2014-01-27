@@ -66,6 +66,10 @@ madrid-rb, 2014-01
 
 ---
 
+![fullscreen](images/websites.gif)
+
+---
+
 ![float-left](images/roberto.png)
 
 ## Roberto Ierusalimschy
@@ -74,6 +78,10 @@ madrid-rb, 2014-01
 ---
 
 ![fullscreen](images/lua-timeline.svg)
+
+---
+
+![fullscreen](images/videogames.jpg)
 
 ---
 
@@ -121,7 +129,7 @@ madrid-rb, 2014-01
 
 ---
 
-# Ruby (MRI)
+## Lines of code
 
 ```bash
 git clone https://github.com/ruby/ruby.git
@@ -130,38 +138,15 @@ rm -rf ruby/benchmark ruby/bootstraptest ruby/doc \
 cloc ruby
 ```
 
-## &rArr; ~650k (C, C++, Ruby)
-
----
-
-# Lua (5.2.3)
+### &rArr; ~650k (C, C++, Ruby)
 
 ```bash
 git clone https://github.com/LuaDist/lua.git
 cloc lua/src
 ```
 
-## &rArr; ~15k (C99)
+### &rArr; ~15k (C99)
 
----
-
-# Batteries included
-
----
-
-# PENDING: Rabbit with/without batteries
-
----
-
-Artillery battery: PENDING definition
-
----
-
-![fullscreen](images/artillery-battery.jpg)
-
----
-
-Pending: Image of soldier
 
 ---
 
@@ -232,6 +217,58 @@ Top-level functions (~30)
     ipairs          pairs       setfenv
 
 ---
+
+# Libraries
+
+---
+
+![float-left](images/gems.png)
+## Ruby &rArr; gems
+## rubygems.org
+## ~70000 gems
+
+---
+
+![fullscreen](images/destroyer.jpg)
+
+---
+
+![float-left](images/rocks.png)
+## Lua &rArr; rocks
+## luarocks.org
+## ~700 rocks
+
+---
+
+# Batteries included
+
+---
+
+# PENDING: Rabbit with/without batteries
+
+---
+
+> **Artillery battery**: a unit of guns, mortars, rockets or missiles so grouped in order to facilitate better battlefield communication and command and control
+
+---
+
+![fullscreen](images/artillery-battery.jpg)
+
+---
+
+Pending: Image of soldier
+
+---
+
+# Thank you
+## Enrique García Cota (@otikik)
+madrid-rb
+
+---
+
+# Appendix 1: Code
+
+---
 ```lua
 local name = "peter" -- or 'peter'
 
@@ -282,27 +319,5 @@ print(type(person)) -- table
 ```
 
 ---
-
-# Libraries
-
----
-
-# Ruby: Gems
-# www.rubygems.org
-
----
-
-# Rails
-
-PENDING: Destroyer
-
----
-
-# Lua: Rocks
-# www.luarocks.com
-
----
-
-
 
 
