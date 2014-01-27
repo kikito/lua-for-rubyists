@@ -73,7 +73,7 @@ madrid-rb, 2014-01
 ![float-left](images/roberto.png)
 
 ## Roberto Ierusalimschy
-> Portable, embeddable, fast.
+> Portable, embeddable, powerful, fast.
 
 ---
 
@@ -156,10 +156,10 @@ cloc lua/src
 ## Ruby core:
 ```ruby
 $ irb
-> Object.constants.map{|c| Object.const_get(c)}
+> a = Object.constants.map{|c| Object.const_get(c)}
  => [ ... ]
 
-> _.select{|c| c.is_a? Class}
+> b = a.select{|c| c.is_a? Class}
  => [ Object, Module, Class, BasicObject, Method,
       NilClass, String, Symbol, Regexp, Range,
       Time, Date, File, Dir, TrueClass, FalseClass,
@@ -167,10 +167,10 @@ $ irb
       Rational, Complex, Thread, Fiber, ...
     ] (73)
 
-> _.map{|c| c.methods.count}.inject(:+)
+> b.map{|c| c.methods.count}.inject(:+)
   => 7112
 
-> _.map{|c| c.public_methods(false).count}.inject(:+)
+> b.map{|c| c.public_methods(false).count}.inject(:+)
   => 399
 ```
 
@@ -178,18 +178,21 @@ $ irb
 
 ## Ruby Stdlib:
 
-* http://www.ruby-doc.org/stdlib-2.1.0
+### www.ruby-doc.org/stdlib-2.1.0
 
-* 109 packages:
+```ruby
 
-  |          |            |            |           |
-  |----------|------------|------------|-----------|
-  | `set`    | `yaml`     | `minitest` | `erb`     |
-  | `base64` | `csv`      | `rss`      | `webrick` |
-  | `date`   | `json`     | `zlib`     | `net/*`   |
-  | ...      |            |            |           |
+     set         yaml       minitest     erb
+     base64      csv        mutex        webrick
+     date        json       zlib         net/*
+     fileutils   matrix     curses       socket
+     pp          profile    rss          uri
+                        ...
 
-* Presentation: “Ruby: Batteries Included”
+                       (~109)
+```
+
+* Presentation: “Ruby: Batteries Included”:
 
   http://www.confreaks.com/videos/2347
 
@@ -199,14 +202,19 @@ $ irb
 
 Types (~7)
 
-    string, number, table, boolean, function, thread, nil
+```bash
+string, number, table, boolean, function, thread, nil
+```
 
 Libraries (~7)
 
-    string, math, table, os, io, coroutine, debug
+```lua
+string, math, table, os, io, coroutine, debug
+```
 
 Top-level functions (~30)
 
+```lua
     assert          load        pcall     setmetatable
     collectgarbage  loadfile    print     tonumber
     dofile          loadstring  rawequal  tostring
@@ -215,6 +223,7 @@ Top-level functions (~30)
     getfenv         next        unpack
     getmetatable    require     select
     ipairs          pairs       setfenv
+```
 
 ---
 
@@ -227,9 +236,6 @@ Top-level functions (~30)
 ## rubygems.org
 ## ~70000 gems
 
----
-
-![fullscreen](images/destroyer.jpg)
 
 ---
 
@@ -244,7 +250,7 @@ Top-level functions (~30)
 
 ---
 
-# PENDING: Rabbit with/without batteries
+![fullscreen](images/batteries.png)
 
 ---
 
@@ -256,7 +262,15 @@ Top-level functions (~30)
 
 ---
 
-Pending: Image of soldier
+![fullscreen](images/destroyer.jpg)
+
+---
+
+![fullscreen](images/soldier.png)
+
+---
+
+![fullscreen](images/macgyver.jpg)
 
 ---
 
