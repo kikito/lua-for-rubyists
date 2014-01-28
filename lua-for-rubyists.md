@@ -328,6 +328,37 @@ redis.eval(script, ["counter"])
 
 ---
 
+![fullscreen](images/nginx.png)
+
+---
+
+![fullscreen](images/openresty.png)
+
+---
+
+PENDING: techempower graph?
+http://www.techempower.com/benchmarks/
+
+---
+
+![fullscreen](images/taobao.jpg)
+
+---
+
+![fullscreen](images/raspberry.png)
+
+---
+
+PENDING: VIM plugins
+
+---
+
+PENDING: CORONA SDK
+
+---
+
+
+
 
 
 # Thank you
