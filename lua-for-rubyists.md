@@ -12,13 +12,12 @@ madrid-rb, 2014-01
 
 # 2 main parts:
 
-## Lua
+## Lua vs ruby
 ## Applications
 
 ---
 
-# Lua
-## Compared with Ruby
+# Lua vs ruby
 
 ---
 
@@ -73,7 +72,7 @@ madrid-rb, 2014-01
 ![float-left](images/roberto.png)
 
 ## Roberto Ierusalimschy
-> Portable, embeddable, powerful, fast.
+> Portable, powerful, embeddable, fast.
 
 ---
 
@@ -122,6 +121,12 @@ madrid-rb, 2014-01
 = data-transition='fade'
 
 ![fullscreen](images/lua-venn-2.svg)
+
+---
+
+FIXME: syntax here
+
+---
 
 ---
 
@@ -263,6 +268,67 @@ Top-level functions (~30)
 ![fullscreen](images/macgyver.jpg)
 
 ---
+
+PENDING: tasks for a imperial destroyer
+
+---
+
+# 2 main parts:
+
+## Lua vs ruby
+## Applications
+
+---
+
+## Applications
+
+---
+
+![fullscreen](images/redis.png)
+
+---
+
+```ruby
+require "redis"
+redis = Redis.new('localhost', 6379)
+
+redis.set("name", "peter")
+name = redis.get("name") # "peter"
+
+redis.set("age", "25")
+new_age = redis.incr("age") # 26
+```
+---
+
+> Concurrent, but single threaded
+
+---
+
+![fullscreen](images/bartender.jpg)
+
+---
+```ruby
+counter = redis.get('counter')
+
+redis.incr('counter') if counter.is_a? Numeric
+```
+
+---
+
+```ruby
+script = <<-EOS
+  local counter = redis.call("GET", KEYS[1])
+  if type(tonumber(counter)) == "number" then
+    return redis.call("INCR", KEYS[1])
+  end
+EOS
+
+redis.eval(script, ["counter"])
+```
+
+---
+
+
 
 # Thank you
 ## Enrique García Cota (@otikik)
