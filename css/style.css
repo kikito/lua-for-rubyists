@@ -37,12 +37,22 @@ body {
   transition: opacity 1s;
 }
 
+.step[data-text='centered'] h1,
+.step[data-text='centered'] h2,
+.step[data-text='centered'] h3 {
+  text-align: center;
+}
+
 .step:not(.active) {
   opacity: 0.0;
 }
 
 .impress-enabled .step.active {
   opacity: 1
+}
+
+.applause {
+  color: #ECA237;
 }
 
 strong {
@@ -211,6 +221,11 @@ img[alt="float-left"] {
   float: left;
   display: block;
   margin-right: 25px;
+}
+
+img[alt="centered"] {
+  display: block;
+  margin: auto;
 }
 
 

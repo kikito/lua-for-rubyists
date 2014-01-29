@@ -4,20 +4,15 @@ title: Lua for Rubyists
 ---
 # Lua for Rubyists
 
-## Enrique García Cota
+## Enrique García Cota (@otikik)
 
-madrid-rb, 2014-01
+### madrid-rb, 2014-01
 
 ---
-
 # 2 main parts:
 
-## Lua vs ruby
 ## Applications
-
----
-
-# Lua vs ruby
+## Lua vs ruby
 
 ---
 
@@ -47,6 +42,143 @@ madrid-rb, 2014-01
 = data-transition='fade'
 
 ![fullscreen](images/earth-moon.png)
+
+---
+
+## Part 1: Applications
+
+---
+
+![fullscreen](images/nginx.png)
+
+---
+
+![fullscreen](images/openresty.png)
+
+---
+
+![fullscreen](images/taobao.jpg)
+
+---
+
+![fullscreen](images/raspberry.png)
+
+---
+
+![fullscreen](images/techempower-1.png)
+
+---
+
+![fullscreen](images/techempower-2.png)
+
+---
+
+![fullscreen](images/redis.png)
+
+---
+
+> Key-value data store
+
+---
+
+```ruby
+require "redis"
+redis = Redis.new('localhost', 6379)
+
+redis.set("name", "peter")
+name = redis.get("name") # "peter"
+
+redis.set("age", "25")
+new_age = redis.incr("age") # 26
+```
+---
+
+> Concurrent, but single threaded
+
+---
+
+![fullscreen](images/bartender.jpg)
+
+---
+
+```ruby
+counter = redis.get('counter')
+
+redis.incr('counter') if counter.is_a? Numeric
+```
+
+---
+
+```ruby
+script = <<-EOS
+  local counter = redis.call("GET", KEYS[1])
+  if type(tonumber(counter)) == "number" then
+    return redis.call("INCR", KEYS[1])
+  end
+EOS
+
+redis.eval(script, ["counter"])
+```
+
+---
+
+PENDING: Include LuaInception?
+
+---
+
+![centered](images/vim.png)
+
+---
+
+```
+brew install vim --with-lua
+or
+brew install macvim --with-lua
+```
+
+---
+
+```bash
+                    Startup     Speed
+
+      Vim script    0           1.498s
+      Python        0.0166s     0.027s (2000%)
+      Luajit        0.0002s     0.001s (1152000%)
+```
+---
+
+![fullscreen](images/neocomplete.gif)
+
+---
+
+![fullscreen](images/unite.gif)
+
+---
+= data-text='centered'
+
+## Corona SDK
+
+![centered](images/corona-sdk.png)
+
+---
+
+![fullscreen](images/corona-games.png)
+
+---
+
+![centered](images/corona-platforms.png)
+
+---
+
+![fullscreen](images/corona-apps.png)
+
+---
+
+![fullscreen](images/love2d.png)
+
+---
+
+# Part 2: Lua vs ruby
 
 ---
 
@@ -124,9 +256,79 @@ madrid-rb, 2014-01
 
 ---
 
-FIXME: syntax here
+# Feel
 
 ---
+
+Ruby &#9825;
+
+```ruby
+# ruby
+
+even_numbers = (1..10).select(&:even?)
+
+tweets.delete_if{ |t| t.older_than? 1.week }
+
+```
+---
+
+```lua
+-- lua
+local name = "peter" -- or 'peter'
+
+other_name = "john" -- global variable!
+
+local age = 17
+age = age + 1
+local adult = age >= 18 -- boolean
+
+local tname = type(name)
+print(tname) -- string
+
+```
+
+---
+
+PENDING: more work here
+
+```ruby
+def days_in_month(year, month)
+  Date(year, month, -1).day
+end
+```
+---
+
+```lua
+local ADULT_AGE = 18
+local function is_adult(age)
+  return age >= ADULT_AGE
+end
+
+-- equivalent*
+local is_adult = function(age)
+  return age >= ADULT_AGE
+end
+
+local adult = is_adult(age)
+print(type(is_adult)) -- function
+```
+---
+
+```lua
+local vowels = { 'a', 'e', 'i', 'o', 'u'}
+print(vowels[1]) -- a
+
+local person = {}
+person['name'] = 'john'
+person.age = 17
+print(person.name) -- john
+print(person.age) -- 17
+
+local another_person = {name = 'john', age = 15}
+
+print(type(vowels)) -- table
+print(type(person)) -- table
+```
 
 ---
 
@@ -153,6 +355,7 @@ cloc lua/src
 ### &rArr; ~15k (C99)
 
 ---
+
 ## Ruby core:
 ```ruby
 $ irb
@@ -273,152 +476,16 @@ PENDING: tasks for a imperial destroyer
 
 ---
 
-# 2 main parts:
-
-## Lua vs ruby
-## Applications
+PENDING: conclusion
 
 ---
 
-## Applications
+# Questions?
+### Enrique García Cota (@otikik)
+### madrid-rb
 
 ---
 
-![fullscreen](images/redis.png)
-
----
-
-```ruby
-require "redis"
-redis = Redis.new('localhost', 6379)
-
-redis.set("name", "peter")
-name = redis.get("name") # "peter"
-
-redis.set("age", "25")
-new_age = redis.incr("age") # 26
-```
----
-
-> Concurrent, but single threaded
-
----
-
-![fullscreen](images/bartender.jpg)
-
----
-```ruby
-counter = redis.get('counter')
-
-redis.incr('counter') if counter.is_a? Numeric
-```
-
----
-
-```ruby
-script = <<-EOS
-  local counter = redis.call("GET", KEYS[1])
-  if type(tonumber(counter)) == "number" then
-    return redis.call("INCR", KEYS[1])
-  end
-EOS
-
-redis.eval(script, ["counter"])
-```
-
----
-
-![fullscreen](images/nginx.png)
-
----
-
-![fullscreen](images/openresty.png)
-
----
-
-PENDING: techempower graph?
-http://www.techempower.com/benchmarks/
-
----
-
-![fullscreen](images/taobao.jpg)
-
----
-
-![fullscreen](images/raspberry.png)
-
----
-
-PENDING: VIM plugins
-
----
-
-PENDING: CORONA SDK
-
----
-
-
-
-
-
-# Thank you
-## Enrique García Cota (@otikik)
-madrid-rb
-
----
-
-# Appendix 1: Code
-
----
-```lua
-local name = "peter" -- or 'peter'
-
-other_name = "john" -- global variable!
-
-local age = 17
-age = age + 1
-local adult = age >= 18 -- boolean
-
-local tname = type(name)
-print(tname) -- string
-
-```
-
----
-
-```lua
-local ADULT_AGE = 18
-local function is_adult(age)
-  return age >= ADULT_AGE
-end
-
--- equivalent*
-local is_adult = function(age)
-  return age >= ADULT_AGE
-end
-
-local adult = is_adult(age)
-print(type(is_adult)) -- function
-```
-
----
-
-```lua
-local vowels = { 'a', 'e', 'i', 'o', 'u'}
-print(vowels[1]) -- a
-
-local person = {}
-person['name'] = 'john'
-person.age = 17
-print(person.name) -- john
-print(person.age) -- 17
-
-local another_person = {name = 'john', age = 15}
-
-print(type(vowels)) -- table
-print(type(person)) -- table
-```
-
----
+# Thank you! <span class="applause">&#9734;</span>
 
 
