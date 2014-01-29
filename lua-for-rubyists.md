@@ -4,7 +4,7 @@ title: Lua for Rubyists
 ---
 # Lua for Rubyists
 
-## Enrique García Cota (@otikik)
+### Enrique García Cota (@otikik)
 
 ### madrid-rb, 2014-01
 
@@ -12,7 +12,7 @@ title: Lua for Rubyists
 # 2 main parts:
 
 ## Applications
-## Lua vs ruby
+## Comparison
 
 ---
 
@@ -45,7 +45,7 @@ title: Lua for Rubyists
 
 ---
 
-## Part 1: Applications
+# Part 1: Applications
 
 ---
 
@@ -102,14 +102,17 @@ new_age = redis.incr("age") # 26
 ---
 
 ```ruby
+
 counter = redis.get('counter')
 
 redis.incr('counter') if counter.is_a? Numeric
+
 ```
 
 ---
 
 ```ruby
+
 script = <<-EOS
   local counter = redis.call("GET", KEYS[1])
   if type(tonumber(counter)) == "number" then
@@ -118,11 +121,12 @@ script = <<-EOS
 EOS
 
 redis.eval(script, ["counter"])
+
 ```
 
 ---
 
-PENDING: Include LuaInception?
+![fullscreen](images/luainception.png)
 
 ---
 
@@ -130,21 +134,16 @@ PENDING: Include LuaInception?
 
 ---
 
-```
+```bash
 brew install vim --with-lua
-or
+```
+
+-or-
+
+```bash
 brew install macvim --with-lua
 ```
 
----
-
-```bash
-                    Startup     Speed
-
-      Vim script    0           1.498s
-      Python        0.0166s     0.027s (2000%)
-      Luajit        0.0002s     0.001s (1152000%)
-```
 ---
 
 ![fullscreen](images/neocomplete.gif)
@@ -153,6 +152,14 @@ brew install macvim --with-lua
 
 ![fullscreen](images/unite.gif)
 
+---
+```bash
+                    Startup     Speed
+
+      Vim script    0           1.498s
+      Python        0.0166s     0.027s (2000%)
+      Lua(jit)      0.0002s     0.001s (1152000%)
+```
 ---
 = data-text='centered'
 
@@ -178,7 +185,7 @@ brew install macvim --with-lua
 
 ---
 
-# Part 2: Lua vs ruby
+# Part 2: Comparison
 
 ---
 
@@ -259,76 +266,190 @@ brew install macvim --with-lua
 # Feel
 
 ---
-
-Ruby &#9825;
-
 ```ruby
 # ruby
+name   = 'Peter'
+age    = 35
+genter = :male
+
+puts "#{name} is a #{age} years old #{gender}"
+```
+
+```bash
+doc = %{
+  Lorem ipsum dolor sit amet
+}
+```
+---
+```lua
+-- lua
+local name   = 'Peter'
+local age    = 35
+local genter = "male"
+
+print(name .. " is a " .. age .. ' years old ' .. gender)
+```
+
+```bash
+local doc = [[
+  Lorem ipsum dolor sit amet
+]]
+```
+---
+Ruby comments:
+
+```ruby
+# a single-line comment in ruby
+
+=begin
+  a multi-line comment in ruby
+=end
+```
+
+Lua comments:
+
+```lua
+-- a single-line comment in Lua
+
+--[[
+  a multi-line comment in Lua
+]]
+```
+---
+
+```ruby
+#ruby
+h = {a: 1, b: 2}
+puts h[:b] # 2
+puts a.class.name # 'Hash'
+
+a = [1,2,3,4]
+puts a[1] # 1
+puts a.class.name # 'Array'
+```
+
+---
+```lua
+-- lua
+local h = {a = 1, b = 2}
+print(h['b'])  -- 2
+print(h.b)     -- also 2
+print(type(b)) -- 'table'
+
+local a = {1,2,3,4}
+print(a[1]) -- 1
+print(type(a)) -- 'table'
+```
+---
+## Lua tables:
+
+* Arrays
+* Hashes
+* Structs
+* References
+* Environments
+* Objects
+* ...
+
+---
+```ruby
+#ruby
+
+
+
+
+def sum(a,b)
+  a + b
+end
+
+
+```
+---
+
+```ruby
+#ruby
+
+module Kernel
+
+  private # ??
+  def sum(a,b)
+    a + b
+  end
+end
+
+```
+
+---
+
+```lua
+-- lua
+
+function sum(a+b)
+  return a + b
+end
+
+print(type(sum))   -- 'function'
+print(type(type))  -- 'function'
+print(type(print)) -- 'function'
+```
+
+---
+
+```lua
+-- lua
+
+_G.sum = function(a+b)
+  return a + b
+end
+
+print(type(_G)) -- 'table'
+```
+
+---
+
+```lua
+-- lua
+
+local sum = function(a+b)
+  return a + b
+end
+```
+
+---
+
+## Lua functions:
+
+* Values
+* Blocks
+* Scopes
+* Iterators
+* Generators
+* ...
+
+---
+
+## Ruby feels &#9825; &#9825; &#9825;
+
+```ruby
 
 even_numbers = (1..10).select(&:even?)
 
 tweets.delete_if{ |t| t.older_than? 1.week }
 
 ```
+
 ---
+## Lua feels like super-javascript
 
-```lua
--- lua
-local name = "peter" -- or 'peter'
+```javascript
 
-other_name = "john" -- global variable!
-
-local age = 17
-age = age + 1
-local adult = age >= 18 -- boolean
-
-local tname = type(name)
-print(tname) -- string
+// Very little of this stuff:
+[9,10,1,2].sort()
+> [1,10,2,9]
 
 ```
 
----
-
-PENDING: more work here
-
-```ruby
-def days_in_month(year, month)
-  Date(year, month, -1).day
-end
-```
----
-
-```lua
-local ADULT_AGE = 18
-local function is_adult(age)
-  return age >= ADULT_AGE
-end
-
--- equivalent*
-local is_adult = function(age)
-  return age >= ADULT_AGE
-end
-
-local adult = is_adult(age)
-print(type(is_adult)) -- function
-```
----
-
-```lua
-local vowels = { 'a', 'e', 'i', 'o', 'u'}
-print(vowels[1]) -- a
-
-local person = {}
-person['name'] = 'john'
-person.age = 17
-print(person.name) -- john
-print(person.age) -- 17
-
-local another_person = {name = 'john', age = 15}
-
-print(type(vowels)) -- table
-print(type(person)) -- table
-```
+http://tylerneylon.com/a/learn-lua/
 
 ---
 
@@ -472,11 +593,20 @@ Top-level functions (~30)
 
 ---
 
-PENDING: tasks for a imperial destroyer
+![fullscreen](images/beetle.jpg)
 
 ---
 
-PENDING: conclusion
+# Conclusion
+
+---
+
+# Ruby is great.
+# Lua is great.
+
+---
+
+![fullscreen](images/macgyver2.jpg)
 
 ---
 
