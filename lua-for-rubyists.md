@@ -324,7 +324,7 @@ puts h[:b] # 2
 puts a.class.name # 'Hash'
 
 a = [1,2,3,4]
-puts a[1] # 1
+puts a[0] # 1
 puts a.class.name # 'Array'
 ```
 
