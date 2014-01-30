@@ -39,7 +39,8 @@ body {
 
 .step[data-text='centered'] h1,
 .step[data-text='centered'] h2,
-.step[data-text='centered'] h3 {
+.step[data-text='centered'] h3,
+.step[data-text='centered'] p {
   text-align: center;
 }
 
