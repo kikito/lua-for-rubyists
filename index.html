@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lua for Rubyists</title>
+    <link href="css/reset.css" rel="stylesheet" />
+    <meta name="author" content="Enrique García Cota">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="shortcut icon" href="css/favicon.png" />
+    <link rel="apple-touch-icon" href="css/apple-touch-icon.png" />
+    <!-- Code Prettifier: -->
+<link href="css/highlight.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+    <link href="css/style.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,800italic,300,400,800' rel='stylesheet' type='text/css'>    
+
+
+  </head>
+
+  <body>
+  <div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+  </div>
+    <div id="impress">
+    <div class='step' >
+    
+<h1>Lua for Rubyists</h1>
+
+<h3>Enrique García Cota (@otikik)</h3>
+
+<h3>madrid-rb, 2014-01</h3>
+</div>
+      <div class='step' >
+    
+<h1>2 main parts:</h1>
+
+<h2>Applications</h2>
+
+<h2>Comparison</h2>
+</div>
+      <div class='step' >
+    
+<h1>It&#39;s Lua, not LUA</h1>
+</div>
+      <div class='step' >
+    
+<p><img src="images/brazil.svg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<h1>SOL &rArr;</h1>
+
+<h2>Simple Object Language</h2>
+</div>
+      <div class='step' >
+    
+<p><img src="images/sol.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<h1>Lua &rArr;</h1>
+
+<h2>“Moon” in Portuguese</h2>
+
+<h2>(No Initials)</h2>
+</div>
+      <div class='step'  data-transition='fade'>
+    
+<p><img src="images/lua-logo.png" alt="fullscreen"></p>
+</div>
+      <div class='step'  data-transition='fade'>
+    
+<p><img src="images/earth-moon.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<h1>Part 1: Applications</h1>
+</div>
+      <div class='step' >
+    
+<p><img src="images/nginx.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/openresty.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/taobao.jpg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/raspberry.png" alt="fullscreen"></p>
+</div>
+      <div class='step'  data-text='centered'>
+    
+<h3><a href="http://www.techempower.com/benchmarks">www.techempower.com/benchmarks</a></h3>
+
+<p><img src="images/techempower-1.png" alt="centered"></p>
+</div>
+      <div class='step'  data-text='centered'>
+    
+<h3><a href="http://www.techempower.com/benchmarks">www.techempower.com/benchmarks</a></h3>
+
+<p><img src="images/techempower-2.png" alt="centered"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/redis.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<blockquote>
+<p>Key-value data store</p>
+</blockquote>
+</div>
+      <div class='step' >
+    <pre><code class='prettyprint ruby'>require "redis"
+redis = Redis.new('localhost', 6379)
+
+redis.set("name", "peter")
+name = redis.get("name") # "peter"
+
+redis.set("age", "25")
+new_age = redis.incr("age") # 26
+</code></pre></div>
+      <div class='step' >
+    
+<blockquote>
+<p>Concurrent, but single threaded</p>
+</blockquote>
+</div>
+      <div class='step' >
+    
+<p><img src="images/bartender.jpg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    <pre><code class='prettyprint ruby'>
+counter = redis.get('counter')
+
+redis.incr('counter') if counter.is_a? Numeric
+
+</code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint ruby'>
+script = <<-EOS
+  local counter = redis.call("GET", KEYS[1])
+  if type(tonumber(counter)) == "number" then
+    return redis.call("INCR", KEYS[1])
+  end
+EOS
+
+redis.eval(script, ["counter"])
+
+</code></pre></div>
+      <div class='step' >
+    
+<p><img src="images/luainception.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/vim.png" alt="centered"></p>
+</div>
+      <div class='step' >
+    <pre><code class='prettyprint bash'>brew install vim --with-lua
+</code></pre>
+<p>-or-</p>
+<pre><code class='prettyprint bash'>brew install macvim --with-lua
+</code></pre></div>
+      <div class='step' >
+    
+<p><img src="images/neocomplete.gif" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/unite.gif" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    <pre><code class='prettyprint bash'>                    Startup     Speed
+
+      Vim script    0           1.498s
+      Python        0.0166s     0.027s (2000%)
+      Lua(jit)      0.0002s     0.001s (1152000%)
+</code></pre></div>
+      <div class='step'  data-text='centered'>
+    
+<h2>Corona SDK</h2>
+
+<p><img src="images/corona-sdk.png" alt="centered"></p>
+</div>
+      <div class='step'  data-text='centered'>
+    
+<p>coronalabs.com/i-want-to-build/games/</p>
+
+<p><img src="images/corona-games.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/corona-platforms.png" alt="centered"></p>
+</div>
+      <div class='step'  data-text='centered'>
+    
+<p>coronalabs.com/i-want-to-build/business-apps/</p>
+
+<p><img src="images/corona-apps.png" alt="centered"></p>
+</div>
+      <div class='step'  data-text='centered'>
+    
+<h3><a href="http://www.love2d.org">www.love2d.org</a></h3>
+
+<p><img src="images/love2d.png" alt="centered"></p>
+</div>
+      <div class='step' >
+    
+<h1>Part 2: Comparison</h1>
+</div>
+      <div class='step' >
+    
+<h1>Generalities</h1>
+</div>
+      <div class='step' >
+    
+<p><img src="images/matz.png" alt="float-left"></p>
+
+<h2>Yukihiro Matsumoto</h2>
+
+<blockquote>
+<p>A general-purpose language to make programmers happy</p>
+</blockquote>
+</div>
+      <div class='step' >
+    
+<p><img src="images/ruby-timeline.svg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/websites.gif" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/roberto.png" alt="float-left"></p>
+
+<h2>Roberto Ierusalimschy</h2>
+
+<blockquote>
+<p>Portable, powerful, embeddable, fast.</p>
+</blockquote>
+</div>
+      <div class='step' >
+    
+<p><img src="images/lua-timeline.svg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/videogames.jpg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<h1>Implementations</h1>
+</div>
+      <div class='step' >
+    
+<h2>Ruby</h2>
+
+<h3>MRI (1.8.7, 1.9.x, 2.x)</h3>
+
+<h3>JRuby</h3>
+
+<h3>Rubinius</h3>
+</div>
+      <div class='step'  data-transition='fade'>
+    
+<p><img src="images/ruby-venn-1.svg" alt="fullscreen"></p>
+</div>
+      <div class='step'  data-transition='fade'>
+    
+<p><img src="images/ruby-venn-2.svg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<h2>Lua</h2>
+
+<h3>Lua (5.0, 5.1, 5.2)</h3>
+
+<h3>LuaJIT</h3>
+
+<h3>eLua</h3>
+</div>
+      <div class='step'  data-transition='fade'>
+    
+<p><img src="images/lua-venn-1.svg" alt="fullscreen"></p>
+</div>
+      <div class='step'  data-transition='fade'>
+    
+<p><img src="images/lua-venn-2.svg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<h1>Feel</h1>
+</div>
+      <div class='step' >
+    <pre><code class='prettyprint ruby'># ruby
+name   = 'Peter'
+age    = 35
+genter = :male
+
+puts "#{name} is a #{age} years old #{gender}"
+</code></pre><pre><code class='prettyprint bash'>doc = %{
+  Lorem ipsum dolor sit amet
+}
+</code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint lua'>-- lua
+local name   = 'Peter'
+local age    = 35
+local genter = "male"
+
+print(name .. " is a " .. age .. ' years old ' .. gender)
+</code></pre><pre><code class='prettyprint bash'>local doc = [[
+  Lorem ipsum dolor sit amet
+]]
+</code></pre></div>
+      <div class='step' >
+    
+<p>Ruby comments:</p>
+<pre><code class='prettyprint ruby'># a single-line comment in ruby
+
+=begin
+  a multi-line comment in ruby
+=end
+</code></pre>
+<p>Lua comments:</p>
+<pre><code class='prettyprint lua'>-- a single-line comment in Lua
+
+--[[
+  a multi-line comment in Lua
+]]
+</code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint ruby'>#ruby
+h = {a: 1, b: 2}
+puts h[:b] # 2
+puts a.class.name # 'Hash'
+
+a = [1,2,3,4]
+puts a[0] # 1
+puts a.class.name # 'Array'
+</code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint lua'>-- lua
+local h = {a = 1, b = 2}
+print(h['b'])  -- 2
+print(h.b)     -- also 2
+print(type(b)) -- 'table'
+
+local a = {1,2,3,4}
+print(a[1]) -- 1
+print(type(a)) -- 'table'
+</code></pre></div>
+      <div class='step' >
+    
+<h2>Lua tables:</h2>
+
+<ul>
+<li>Arrays</li>
+<li>Hashes</li>
+<li>Structs</li>
+<li>References</li>
+<li>Environments</li>
+<li>Objects</li>
+<li>...</li>
+</ul>
+</div>
+      <div class='step' >
+    <pre><code class='prettyprint ruby'>#ruby
+
+
+
+
+def sum(a,b)
+  a + b
+end
+
+
+</code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint ruby'>#ruby
+
+module Kernel
+
+  private # ??
+  def sum(a,b)
+    a + b
+  end
+end
+
+</code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint lua'>-- lua
+
+function sum(a+b)
+  return a + b
+end
+
+print(type(sum))   -- 'function'
+print(type(type))  -- 'function'
+print(type(print)) -- 'function'
+</code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint lua'>-- lua
+
+_G.sum = function(a+b)
+  return a + b
+end
+
+print(type(_G)) -- 'table'
+</code></pre></div>
+      <div class='step' >
+    <pre><code class='prettyprint lua'>-- lua
+
+local sum = function(a+b)
+  return a + b
+end
+</code></pre></div>
+      <div class='step' >
+    
+<h2>Lua functions:</h2>
+
+<ul>
+<li>Values</li>
+<li>Blocks</li>
+<li>Scopes</li>
+<li>Iterators</li>
+<li>Generators</li>
+<li>...</li>
+</ul>
+</div>
+      <div class='step' >
+    
+<h2>Ruby feels &#9825; &#9825; &#9825;</h2>
+<pre><code class='prettyprint ruby'>
+even_numbers = (1..10).select(&:even?)
+
+tweets.delete_if{ |t| t.older_than? 1.week }
+
+</code></pre></div>
+      <div class='step' >
+    
+<h2>Lua feels like super-javascript</h2>
+<pre><code class='prettyprint javascript'>
+// Very little of this stuff:
+[9,10,1,2].sort()
+> [1,10,2,9]
+
+</code></pre>
+<p>“Learn Lua in 15 minutes”
+<a href="http://tylerneylon.com/a/learn-lua/">http://tylerneylon.com/a/learn-lua/</a></p>
+</div>
+      <div class='step' >
+    
+<h1>Size</h1>
+</div>
+      <div class='step' >
+    
+<h2>Lines of code</h2>
+<pre><code class='prettyprint bash'>git clone https://github.com/ruby/ruby.git
+rm -rf ruby/benchmark ruby/bootstraptest ruby/doc \
+       ruby/ext ruby/sample ruby/test ruby/tool
+cloc ruby
+</code></pre>
+<h3>&rArr; ~650k (C, C++, Ruby)</h3>
+<pre><code class='prettyprint bash'>git clone https://github.com/LuaDist/lua.git
+cloc lua/src
+</code></pre>
+<h3>&rArr; ~15k (C99)</h3>
+</div>
+      <div class='step' >
+    
+<h2>Ruby core:</h2>
+<pre><code class='prettyprint ruby'>$ irb
+> a = Object.constants.map{|c| Object.const_get(c)}
+ => [ ... ]
+
+> b = a.select{|c| c.is_a? Class}
+ => [ Object, Module, Class, BasicObject, Method,
+      NilClass, String, Symbol, Regexp, Range,
+      Time, Date, File, Dir, TrueClass, FalseClass,
+      Numeric, Integer, Fixnum, Float, Bignum,
+      Rational, Complex, Thread, Fiber, ...
+    ] (73)
+
+> b.map{|c| c.methods.count}.inject(:+)
+  => 7112
+
+> b.map{|c| c.public_methods(false).count}.inject(:+)
+  => 399
+</code></pre></div>
+      <div class='step' >
+    
+<h2>Ruby Stdlib:</h2>
+
+<h3><a href="http://www.ruby-doc.org/stdlib-2.1.0">www.ruby-doc.org/stdlib-2.1.0</a></h3>
+<pre><code class='prettyprint ruby'>
+     set         yaml       minitest     erb
+     base64      csv        mutex        webrick
+     date        json       zlib         net/*
+     fileutils   matrix     curses       socket
+     pp          profile    rss          uri
+                        ...
+
+                       (~109)
+</code></pre>
+<ul>
+<li><p>Presentation: “Ruby: Batteries Included”:</p>
+
+<p><a href="http://www.confreaks.com/videos/2347">http://www.confreaks.com/videos/2347</a></p></li>
+</ul>
+</div>
+      <div class='step' >
+    
+<p><img src="images/gems.png" alt="float-left"></p>
+
+<h2>Ruby &rArr; gems</h2>
+
+<h2>rubygems.org</h2>
+
+<h2>~70000 gems</h2>
+</div>
+      <div class='step' >
+    
+<h2>Lua:</h2>
+
+<p>Types (~7)</p>
+<pre><code class='prettyprint bash'>string, number, table, boolean, function, thread, nil
+</code></pre>
+<p>Libraries (~7)</p>
+<pre><code class='prettyprint lua'>string, math, table, os, io, coroutine, debug
+</code></pre>
+<p>Top-level functions (~30)</p>
+<pre><code class='prettyprint lua'>    assert          load        pcall     setmetatable
+    collectgarbage  loadfile    print     tonumber
+    dofile          loadstring  rawequal  tostring
+    error           module      rawget    type
+    gcinfo          newproxy    rawset    xpcall
+    getfenv         next        unpack
+    getmetatable    require     select
+    ipairs          pairs       setfenv
+</code></pre></div>
+      <div class='step' >
+    
+<p><img src="images/rocks.png" alt="float-left"></p>
+
+<h2>Lua &rArr; rocks</h2>
+
+<h2>luarocks.org</h2>
+
+<h2>~700 rocks</h2>
+</div>
+      <div class='step' >
+    
+<h1>Batteries included</h1>
+</div>
+      <div class='step' >
+    
+<p><img src="images/batteries.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<blockquote>
+<p><strong>Artillery battery</strong>: a unit of guns, mortars, rockets or missiles so grouped in order to facilitate better battlefield communication and command and control</p>
+</blockquote>
+</div>
+      <div class='step' >
+    
+<p><img src="images/artillery-battery.jpg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/destroyer.jpg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/soldier.png" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/macgyver.jpg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<p><img src="images/beetle.jpg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<h1>Conclusion</h1>
+</div>
+      <div class='step' >
+    
+<h1>Ruby is great.</h1>
+
+<h1>Lua is great.</h1>
+</div>
+      <div class='step' >
+    
+<p><img src="images/macgyver2.jpg" alt="fullscreen"></p>
+</div>
+      <div class='step' >
+    
+<h1>Questions?</h1>
+
+<h3>Enrique García Cota (@otikik)</h3>
+
+<h3>madrid-rb</h3>
+</div>
+      <div class='step' >
+    
+<h1>Thank you! <span class="applause">&#9734;</span></h1>
+
+      </div>
+    <script src="js/impress.js"></script>
+    <script>impress().init();</script>
+  </body>
+</html>
+    
