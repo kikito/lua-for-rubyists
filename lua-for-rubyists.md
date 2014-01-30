@@ -49,6 +49,10 @@ title: Lua for Rubyists
 
 ---
 
+![fullscreen](images/lua-the-cat.jpg)
+
+---
+
 # Part 1: Applications
 
 ---
