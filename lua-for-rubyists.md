@@ -20,6 +20,10 @@ title: Lua for Rubyists
 
 ---
 
+![fullscreen](images/brazil.svg)
+
+---
+
 # SOL &rArr;
 ## Simple Object Language
 
@@ -64,12 +68,18 @@ title: Lua for Rubyists
 ![fullscreen](images/raspberry.png)
 
 ---
+= data-text='centered'
 
-![fullscreen](images/techempower-1.png)
+### www.techempower.com/benchmarks
+
+![centered](images/techempower-1.png)
 
 ---
+= data-text='centered'
 
-![fullscreen](images/techempower-2.png)
+### www.techempower.com/benchmarks
+
+![centered](images/techempower-2.png)
 
 ---
 
@@ -168,6 +178,9 @@ brew install macvim --with-lua
 ![centered](images/corona-sdk.png)
 
 ---
+= data-text='centered'
+
+coronalabs.com/i-want-to-build/games/
 
 ![fullscreen](images/corona-games.png)
 
@@ -176,12 +189,18 @@ brew install macvim --with-lua
 ![centered](images/corona-platforms.png)
 
 ---
+= data-text='centered'
 
-![fullscreen](images/corona-apps.png)
+coronalabs.com/i-want-to-build/business-apps/
+
+![centered](images/corona-apps.png)
 
 ---
+= data-text='centered'
 
-![fullscreen](images/love2d.png)
+### www.love2d.org
+
+![centered](images/love2d.png)
 
 ---
 
@@ -448,7 +467,7 @@ tweets.delete_if{ |t| t.older_than? 1.week }
 > [1,10,2,9]
 
 ```
-
+“Learn Lua in 15 minutes”
 http://tylerneylon.com/a/learn-lua/
 
 ---
